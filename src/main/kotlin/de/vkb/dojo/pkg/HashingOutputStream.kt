@@ -28,4 +28,9 @@ class HashingOutputStream(
         upstream.write(b)
         digester.update(b.toByte())
     }
+
+    override fun close() {
+        upstream.close()
+        super.close()
+    }
 }

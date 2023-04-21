@@ -2,6 +2,7 @@ package de.vkb.dojo.pkg
 
 import java.io.File
 import java.io.OutputStream
+import java.io.OutputStreamWriter
 import java.io.Writer
 import java.security.MessageDigest
 import java.util.zip.ZipEntry
@@ -52,6 +53,11 @@ class ZipperHasher(
 
     fun zip() {
         add(baseDir, "")
+        output.putNextEntry(ZipEntry("sum"))
+        OutputStreamWriter(NonClosingOutputStream(output)).use { w ->
+            w.append("hallo welt")
+        }
+        output.closeEntry()
     }
 
     override fun close() {
