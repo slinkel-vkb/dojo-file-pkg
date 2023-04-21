@@ -16,12 +16,12 @@ Die Ordner-Struktur (exemplarisch):
 ```
 ├── binaries/               <dir>
 │   ├── random/             <dir>
-│   │   ├── 1               4MB
-│   │   ├── 2               4MB
-│   │   ├── 3               4MB
-│   │   ├── 4               4MB
-│   │   └── 5               4MB
-│   └── zeros.bin           4MB
+│   │   ├── 1               16MB
+│   │   ├── 2               16MB
+│   │   ├── 3               16MB
+│   │   ├── 4               16MB
+│   │   └── 5               16MB
+│   └── zeros.bin           16MB
 ├── text/                   <dir>
 │   ├── article.txt         5KB
 │   ├── book.txt            20KB
@@ -29,7 +29,7 @@ Die Ordner-Struktur (exemplarisch):
 └── pi.txt                  100KB
 ```
 
-Erstellt werden soll eine Datei `output.tgz` mit folgendem Inhalt
+Erstellt werden soll eine Datei `output.zip` mit folgendem Inhalt
 
 ```
 binaries/

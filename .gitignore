@@ -6,6 +6,8 @@ target/
 out/
 input/
 output/
+tmp/
+output.*
 .micronaut/
 .idea
 *.iml
