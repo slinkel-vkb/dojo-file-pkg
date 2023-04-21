@@ -71,3 +71,10 @@ und eine Datei output.tgz.sum:
 ## Erwartungshaltung
 
 Die Aufgabe soll natürlich so effizient und resourcen-sparend wie möglich sein
+
+
+# Evaluation
+
+- naive Variante 1: 2.732ms bei 96MB, 29.302ms bei 929MB
+- zippen und file digesten in einem, archiv-hash danach: 2.720ms, 29.111ms bei 929NB
+- zippen, file digesten und archiv-hash in einem: ?ms, 28.556ms bei 929NB
