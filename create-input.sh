@@ -8,29 +8,41 @@ loremipsum() {
   fi
 }
 
-mkdir -p input input/binaries input/binaries/random input/text
+mkdir -p input input/binaries input/binaries/random
 
-loremipsum paragraphs 50 > input/text/article.txt
-loremipsum paragraphs 50 > input/text/book.txt
-loremipsum paragraphs 50 >> input/text/book.txt
-loremipsum paragraphs 50 >> input/text/book.txt
-loremipsum paragraphs 50 >> input/text/book.txt
-loremipsum paragraphs 50 > input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
-loremipsum paragraphs 50 >> input/text/epos.txt
+if [ ! -d "input/mini" ]; then
+  mkdir -p input/mini
+  for run in {1..10000}; do
+    cp lorem.txt input/mini/$run.txt
+  done
+fi
+if [ ! -d "input/text" ]; then
+  mkdir -p input/text
+  loremipsum paragraphs 50 > input/text/article.txt
+  loremipsum paragraphs 50 > input/text/book.txt
+  loremipsum paragraphs 50 >> input/text/book.txt
+  loremipsum paragraphs 50 >> input/text/book.txt
+  loremipsum paragraphs 50 >> input/text/book.txt
+  loremipsum paragraphs 50 > input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+  loremipsum paragraphs 50 >> input/text/epos.txt
+fi
+if [ ! -f "input/pi.txt" ]; then
+  curl "https://uploadbeta.com/api/pi/?cached&n=100000" -o ./input/pi.txt
+fi
+for i in {1..5}; do
+  if [ -f input/binaries/random/$i ]; then
+    dd if=/dev/random of=input/binaries/random/$i bs=4096 count=4096
+  fi
+done
+if [ -f input/binaries/zeros.bin ]; then
+  dd if=/dev/zero of=input/binaries/zeros.bin bs=4096 count=4096
+fi
 
-curl "https://uploadbeta.com/api/pi/?cached&n=100000" -o ./input/pi.txt
-
-dd if=/dev/random of=input/binaries/random/1 bs=4096 count=4096
-dd if=/dev/random of=input/binaries/random/2 bs=4096 count=4096
-dd if=/dev/random of=input/binaries/random/3 bs=4096 count=4096
-dd if=/dev/random of=input/binaries/random/4 bs=4096 count=4096
-dd if=/dev/random of=input/binaries/random/5 bs=4096 count=4096
-dd if=/dev/zero of=input/binaries/zeros.bin bs=4096 count=4096
 
